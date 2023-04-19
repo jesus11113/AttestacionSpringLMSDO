@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Админка</title>
+</head>
+<body>
+  <h1>ЛК Администратора</h1>
+<form method="post" th:action="@{/logout}">
+    <button type="submit">Выйти из ЛК</button>
+</form>
+  <form method="get" action="/admin/product/add">
+      <input type="submit" value="Добавить товар">
+  </form>
+<hr>
+<div th:each="product : ${products}">
+    <p th:text="'Наименование: ' + ${product.getTitle()}"></p>
+    <p th:text="'Описание: ' + ${product.getDescription()}"></p>
+    <p th:text="'Цена: ' + ${product.getPrice()}"></p>
+    <p th:text="'Склад: ' + ${product.getWarehouse()}"></p>
+    <p th:text="'Продавец: ' + ${product.getSeller()}"></p>
+    <p th:text="'Категория: ' + ${product.getCategoryProduct().getName()}"></p>
+    <a th:href="@{/admin/product/edit/{id}(id=${product.getId()})}">Редактировать товар</a>
+    <a th:href="@{/admin/product/delete/{id}(id=${product.getId()})}">Удалить товар</a>
+    <hr>
+
+</div>
+</body>
+</html>

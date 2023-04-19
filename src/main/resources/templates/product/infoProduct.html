@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Информация о товаре</title>
+</head>
+<body>
+<form method="get" action="/personAccount">
+  <input type="submit" value="Вернуться на главную">
+</form>
+<br>
+  <h3>Информация о товаре</h3>
+  <p th:text="'Наименование: ' + ${product.getTitle()}"></p>
+  <p th:text="'Описание: ' + ${product.getDescription()}"></p>
+  <p th:text="'Цена: ' + ${product.getPrice()}"></p>
+  <p th:text="'Склад: ' + ${product.getWarehouse()}"></p>
+  <p th:text="'Продавец: ' + ${product.getSeller()}"></p>
+  <p th:text="'Категория: ' + ${product.getCategoryProduct().getName()}"></p>
+  <div th:each="img : ${product.getImageList()}">
+    <img alt="опять куда-то сбежала =)" style="float: left" th:src="'/img/' + ${img.getFileName()}">
+  </div>
+</body>
+</html>
